@@ -81,10 +81,7 @@ testset_batchsize = test_loader.batch_size
 # This shrinks the training dataset to something DataCamp can manage.
 train_loader = []
 for batch_idx, (data, target) in enumerate(initial_train_loader):
-    if batch_idx < 50:
-        train_loader.append((data, target))
-    else:
-        break
+    train_loader.append((data, target))
 
 
 def train(model):
@@ -93,6 +90,7 @@ def train(model):
     optimizer = optim.Adam(model.parameters(), lr=3e-4)
 
     for i, data in enumerate(train_loader, 0):
+        print(i)
         inputs, labels = data
         optimizer.zero_grad()
 
